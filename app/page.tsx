@@ -32,12 +32,12 @@ export default function Home() {
 
   return (
     <div id='homePAGE' className='
-    h-screen w-full bg-black text-white flex flex-col justify-center items-center'>
+    h-screen w-full bg-black text-gray-200 flex flex-col justify-center items-center'>
 
 
 
       <div id="promptSECTION" className="
-      h-1/3 w-2/3 bg-gray-800 border-4 border-white flex flex-col justify-center items-center">
+      h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center">
 
         <div id="prompt" className="">
           <h1>Hello</h1>
@@ -48,7 +48,7 @@ export default function Home() {
 
 
       <div id="selectionSECTION" className="
-      h-1/4 w-2/3 mt-5 mb-5 border-4 border-white flex flex-col justify-center items-center">
+      h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-col justify-center items-center">
 
         <div id="selectionOptions" className="">
           <div><h1>Selection Option 1</h1></div>
@@ -59,7 +59,7 @@ export default function Home() {
 
 
       <div id="inputeSECTION" className="
-      h-1/4 w-2/3 bg-gray-800 border-4 border-white flex flex-col justify-center items-center">
+      h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center">
 
         <div id='inputCONTAINER' className='
         w-full h-full'>
