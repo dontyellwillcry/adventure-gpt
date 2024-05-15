@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-
+import OpenAI from "openai";
 import Image from 'next/image'
 
 
@@ -9,6 +9,19 @@ import Image from 'next/image'
 const playerInput = {
   playerActions: "",
 };
+
+const openai = new OpenAI();
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: "You are a helpful assistant." }],
+    model: "gpt-3.5-turbo",
+  });
+
+  console.log(completion.choices[0]);
+}
+
+main();
 
 
 
