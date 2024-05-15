@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <div id='homePAGE' className='
-    h-screen w-full bg-black text-gray-200 flex flex-col justify-center items-center'>
+    h-screen w-full  text-gray-200 flex flex-col justify-center items-center'>
 
 
 
