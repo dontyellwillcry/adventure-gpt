@@ -26,7 +26,7 @@ export default function Home() {
   const formRef = useRef();
   const [{ playerActions }, setState] = useState(playerInput);
 
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
