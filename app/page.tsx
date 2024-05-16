@@ -1,31 +1,27 @@
-'use client';
-import openai from "@/utils/openai";
-import { useRef, useEffect, useState } from 'react';
+"use client";
+// import openai from "@/utils/openai";
+import axios from "axios";
+import { useRef, useEffect, useState } from "react";
 import OpenAI from "openai";
-import Image from 'next/image'
-
-
+import Image from "next/image";
 
 const playerInput = {
   playerActions: "",
 };
 
-// const openai = new OpenAI();
-
-// async function main() {
-//   const completion = await openai.chat.completions.create({
-//     messages: [{ role: "system", content: "You are a helpful assistant." }],
-//     model: "gpt-3.5-turbo",
-//   });
-
-//   console.log(completion.choices[0]);
-// }
-
-// main();
-
-
-
 export default function Home() {
+  const fetchChatGpt = async () => {
+    try {
+      const res = await axios.get("/api/openai");
+      console.log(res.data);
+    } catch (error) {
+      console.error("There was a problem fetching from openai:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchChatGpt();
+  }, []);
 
   const formRef = useRef();
   const [{ playerActions }, setState] = useState(playerInput);
@@ -34,59 +30,62 @@ export default function Home() {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
-  const clearState = () => setState({ ...playerInput });
+  // const clearState = () => setState({ ...playerInput });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-
-  };
-
+  // };
 
   return (
-    <div id='homePAGE' className='
-    h-screen w-full  text-gray-200 flex flex-col justify-center items-center'>
-
-
-
-      <div id="promptSECTION" className="
-      h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center">
-
+    <div
+      id="homePAGE"
+      className="
+    h-screen w-full  text-gray-200 flex flex-col justify-center items-center"
+    >
+      <div
+        id="promptSECTION"
+        className="
+      h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+      >
         <div id="prompt" className="">
           <h1>Hello</h1>
         </div>
-
       </div>
 
-
-
-      <div id="selectionSECTION" className="
-      h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-col justify-center items-center">
-
+      <div
+        id="selectionSECTION"
+        className="
+      h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-col justify-center items-center"
+      >
         <div id="selectionOptions" className="">
-          <div><h1>Selection Option 1</h1></div>
+          <div>
+            <h1>Selection Option 1</h1>
+          </div>
         </div>
-
       </div>
 
-
-
-      <div id="inputeSECTION" className="
-      h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center">
-
-        <div id='inputCONTAINER' className='
-        w-full h-full'>
-
+      <div
+        id="inputeSECTION"
+        className="
+      h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+      >
+        <div
+          id="inputCONTAINER"
+          className="
+        w-full h-full"
+        >
           <form
-            ref={formRef}
+            // ref={formRef}
             name="sentMessage"
-            validate onSubmit={handleSubmit}
-            className=' w-full h-full flex flex-col justify-center items-center'
+            // validate onSubmit={handleSubmit}
+            className=" w-full h-full flex flex-col justify-center items-center"
           >
-
-            <div id='playerINPUT' className='
-            w-full h-full'>
-
+            <div
+              id="playerINPUT"
+              className="
+            w-full h-full"
+            >
               <div className="flex flex-col w-full h-full">
                 <label htmlFor="message">Your Actions</label>
                 <textarea
@@ -98,25 +97,17 @@ export default function Home() {
                   onChange={handleChange}
                 ></textarea>
               </div>
-
             </div>
-
 
             <button
               type="submit"
-              className="mt-3 px-4 py-2 bg-white border border-black text-black hover:bg-black hover:text-white transition duration-500 ease-in-out">
+              className="mt-3 px-4 py-2 bg-white border border-black text-black hover:bg-black hover:text-white transition duration-500 ease-in-out"
+            >
               Send
             </button>
-
           </form>
-
         </div>
-
       </div>
-
-
-
     </div>
-
   );
 }
