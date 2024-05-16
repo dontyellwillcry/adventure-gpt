@@ -1,13 +1,13 @@
-// require('dotenv').config();
+require('dotenv').config();
 
 
-// import OpenAI from "openai";
+import OpenAI from "openai";
 
-// const apiKey = process.env.OPENAI_API_KEY;
+const apiKey = process.env.OPENAI_API_KEY;
 
-// const openai = new OpenAI({ apiKey });
+const openai = new OpenAI({ apiKey });
 
-// export default openai;
+export default openai;
 
 
 
