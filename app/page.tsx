@@ -12,7 +12,7 @@ const playerInput = {
 export default function Home() {
   const fetchChatGpt = async () => {
     try {
-      const res = await axios.get("/api/openai");
+      const res = await axios.post("/api/openai");
       console.log(res.data);
     } catch (error) {
       console.error("There was a problem fetching from openai:", error);
