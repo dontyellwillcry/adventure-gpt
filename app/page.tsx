@@ -11,8 +11,13 @@ const playerInput = {
 
 export default function Home() {
   const fetchChatGpt = async () => {
+    const myRequest = "How deep is the ocean";
     try {
-      const res = await axios.post("/api/openai");
+      const res = await axios.post("/api/openai", myRequest, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       console.log(res.data);
     } catch (error) {
       console.error("There was a problem fetching from openai:", error);
@@ -26,7 +31,7 @@ export default function Home() {
   const formRef = useRef();
   const [{ playerActions }, setState] = useState(playerInput);
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };

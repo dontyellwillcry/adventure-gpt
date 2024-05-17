@@ -2,12 +2,16 @@ import { NextResponse } from 'next/server';
 import openai from "@/utils/openai";
 
 export async function POST(req) {
+  // const { myRequest } = req.body; 
+  // console.log("myRequest:", myRequest); 
+  const body = await req.json()
+  console.log("my req.body", body)
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         { role: "system", content: "You are a helpful assistant." }, // change this to a variable query base on the user selection
-        { role: "user", content: "how fast is light" } // change this to a variable depending on what the user types
+        { role: "user", content: body } // change this to a variable depending on what the user types
       ],
     });
 
