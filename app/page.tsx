@@ -31,7 +31,7 @@ export default function Home() {
   const formRef = useRef();
   const [{ playerActions }, setState] = useState(playerInput);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
     console.log(`Updated ${name} to ${value}`); // For debugging
