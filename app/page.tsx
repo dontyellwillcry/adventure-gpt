@@ -9,6 +9,8 @@ import Image from "next/image";
 // };
 
 export default function Home() {
+
+  const  [response,  setResponse] =  useState<string>("")
   const fetchChatGpt = async () => {
     try {
       const res = await axios.post("/api/openai", playerActions, {
@@ -16,7 +18,8 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       });
-      console.log(res.data);
+      setResponse(res.data.message.content)
+      console.log(res.data.message.content);
     } catch (error) {
       console.error("There was a problem fetching from openai:", error);
     }
@@ -63,7 +66,7 @@ export default function Home() {
       h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
       >
         <div id="prompt" className="">
-          <h1>Hello</h1>
+          {response?  <h1>{response}</h1>  : <h1>Hello! Please select your  adventure</h1>}
         </div>
       </div>
 
