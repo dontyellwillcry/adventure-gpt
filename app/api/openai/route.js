@@ -5,7 +5,6 @@ export async function POST(req) {
   // const { myRequest } = req.body; 
   // console.log("myRequest:", myRequest); 
   const body = await req.json()
-  console.log("my req.body", body)
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
