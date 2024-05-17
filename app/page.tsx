@@ -31,7 +31,7 @@ export default function Home() {
   const formRef = useRef();
   const [{ playerActions }, setState] = useState(playerInput);
 
-  const handleChange = (e: React.) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
     console.log(`Updated ${name} to ${value}`); // For debugging
@@ -86,10 +86,10 @@ export default function Home() {
           className="
         w-full h-full"
         >
-          <form
-            name="sentMessage"
-            onSubmit={handleSubmit}
-            className=" w-full h-full flex flex-col justify-center items-center"
+          <form 
+          name="sentMessage" 
+          onSubmit={handleSubmit} 
+          className=" w-full h-full flex flex-col justify-center items-center"
           >
             <div
               id="playerINPUT"
