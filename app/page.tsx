@@ -2,7 +2,6 @@
 // import openai from "@/utils/openai";
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
-import OpenAI from "openai";
 import Image from "next/image";
 
 const playerInput = {
@@ -13,7 +12,7 @@ export default function Home() {
   const fetchChatGpt = async () => {
     const myRequest = "How deep is the ocean";
     try {
-      const res = await axios.post("/api/openai", myRequest, {
+      const res = await axios.post("/api/openai", playerActions, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -28,15 +27,24 @@ export default function Home() {
   //   fetchChatGpt();
   // }, []);
 
-  const formRef = useRef();
-  const [{ playerActions }, setState] = useState(playerInput);
+  // const formRef = useRef();
+  // const [{ playerActions }, setState] = useState(playerInput);
+
+  // const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  //   const { name, value } = e.target;
+  //   setState((prevState) => ({ ...prevState, [name]: value }));
+  //   console.log(`Updated ${name} to ${value}`); // For debugging
+  // };
+  // const clearState = () => setState({ ...playerInput });
+
+  const [playerActions, setPlayerActions] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setState((prevState) => ({ ...prevState, [name]: value }));
-    console.log(`Updated ${name} to ${value}`); // For debugging
+    setPlayerActions(e.target.value);
+    console.log(`Updated playerActions to ${e.target.value}`); // For debugging
   };
-  const clearState = () => setState({ ...playerInput });
+
+  const clearState = () => setPlayerActions("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,11 +94,7 @@ export default function Home() {
           className="
         w-full h-full"
         >
-          <form 
-          name="sentMessage" 
-          onSubmit={handleSubmit} 
-          className=" w-full h-full flex flex-col justify-center items-center"
-          >
+          <form name="sentMessage" onSubmit={handleSubmit} className=" w-full h-full flex flex-col justify-center items-center">
             <div
               id="playerINPUT"
               className="
