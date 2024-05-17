@@ -3,14 +3,14 @@
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import GenreButton from "./components/genres/GenreButton";
 
 // const playerInput = {
 //   playerActions: "",
 // };
 
 export default function Home() {
-
-  const  [response,  setResponse] =  useState<string>("")
+  const [response, setResponse] = useState<string>("");
   const fetchChatGpt = async () => {
     try {
       const res = await axios.post("/api/openai", playerActions, {
@@ -18,7 +18,7 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       });
-      setResponse(res.data.message.content)
+      setResponse(res.data.message.content);
       console.log(res.data.message.content);
     } catch (error) {
       console.error("There was a problem fetching from openai:", error);
@@ -53,35 +53,27 @@ export default function Home() {
       console.error("Error occurred during fetchChatGpt:", error);
     }
   };
-
+  const genres = ['Sci-fi', 'Horror', 'Fantasy', 'Noir'];
   return (
-    <div
-      id="homePAGE"
-      className="
-    h-screen w-full  text-gray-200 flex flex-col justify-center items-center"
-    >
+    <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
       <div
         id="promptSECTION"
-        className="
-      h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+        className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
       >
         <div id="prompt" className="">
-          {response?  <h1>{response}</h1>  : <h1>Hello! Please select your  adventure</h1>}
+          {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
         </div>
       </div>
 
       <div
-        id="selectionSECTION"
-        className="
-      h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-col justify-center items-center"
-      >
-        <div id="selectionOptions" className="">
-          <div>
-            <h1>Selection Option 1</h1>
-          </div>
-        </div>
-      </div>
-
+      id="selectionSECTION"
+      className="h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between"
+    >
+      {genres.map((genre, index) => (
+        <GenreButton key={index} genre={genre} />
+      ))}
+    </div>
+  );
       <div
         id="inputeSECTION"
         className="
