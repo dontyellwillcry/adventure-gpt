@@ -15,8 +15,8 @@ export default function Home() {
     try {
       const res = await axios.post("/api/openai", myRequest, {
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       });
       console.log(res.data);
     } catch (error) {
@@ -24,23 +24,29 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    fetchChatGpt();
-  }, []);
+  // useEffect(() => {
+  //   fetchChatGpt();
+  // }, []);
 
   const formRef = useRef();
   const [{ playerActions }, setState] = useState(playerInput);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
+    console.log(`Updated ${name} to ${value}`); // For debugging
   };
-  // const clearState = () => setState({ ...playerInput });
+  const clearState = () => setState({ ...playerInput });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  // };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await fetchChatGpt();
+      clearState();
+    } catch (error) {
+      console.error("Error occurred during fetchChatGpt:", error);
+    }
+  };
 
   return (
     <div
@@ -81,9 +87,8 @@ export default function Home() {
         w-full h-full"
         >
           <form
-            // ref={formRef}
             name="sentMessage"
-            // validate onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             className=" w-full h-full flex flex-col justify-center items-center"
           >
             <div
