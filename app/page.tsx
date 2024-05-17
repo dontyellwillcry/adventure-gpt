@@ -4,13 +4,12 @@ import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
-const playerInput = {
-  playerActions: "",
-};
+// const playerInput = {
+//   playerActions: "",
+// };
 
 export default function Home() {
   const fetchChatGpt = async () => {
-    const myRequest = "How deep is the ocean";
     try {
       const res = await axios.post("/api/openai", playerActions, {
         headers: {
@@ -22,10 +21,6 @@ export default function Home() {
       console.error("There was a problem fetching from openai:", error);
     }
   };
-
-  // useEffect(() => {
-  //   fetchChatGpt();
-  // }, []);
 
   // const formRef = useRef();
   // const [{ playerActions }, setState] = useState(playerInput);
