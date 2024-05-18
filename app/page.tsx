@@ -14,11 +14,10 @@ export default function Home() {
   const [currentGenre, setCurrentGenre] = useState<string>("");
   // const [isVisible, setIsVisible] = useState<boolean>(true);
 
+  // prettier-ignore
   const fetchChatGpt = async () => {
     try {
-      const res = await axios.post(
-        "/api/openai",
-        { content, playerActions },
+      const res = await axios.post("/api/openai",{ content, playerActions },
         {
           headers: {
             "Content-Type": "application/json",
