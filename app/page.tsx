@@ -37,7 +37,7 @@ export default function Home() {
     console.log(`Updated playerActions to ${e.target.value}`); // For debugging
   };
 
-  /* This function takes the selected genre as an argument and compares it against an array of objects that each has a genre
+  /* This function takes the selected genre from the genre.map as an argument and compares it against an array of objects that each has a genre
    as a key:value pair. when it matches the genre to the SystemContent genre it passes the content key:value pair to the 
    content useState() and it passes the SystemContent.genre to the current useState()*/
   const handleChooseGenre = (genre: string) => {
@@ -76,7 +76,7 @@ export default function Home() {
   const styles = {
     backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'url("/images/Lake.png")',
     backgroundSize: "cover",
-    transition: "background-image 1s ease-in-out",
+    transition: "background-image 3s ease-in-out",
   };
   return (
     <div style={styles}>
@@ -101,15 +101,18 @@ export default function Home() {
         </div>
         <div
           id="inputeSECTION"
-          className="
-      h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+          className="h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
         >
           <div
             id="inputCONTAINER"
             className="
         w-full h-full"
           >
-            <form name="sentMessage" onSubmit={handleSubmit} className=" w-full h-full flex flex-col justify-center items-center">
+            <form
+              name="sentMessage"
+              onSubmit={handleSubmit}
+              className=" w-full h-full flex flex-col justify-center items-center"
+            >
               <div
                 id="playerINPUT"
                 className="
