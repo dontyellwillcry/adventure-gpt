@@ -4,20 +4,23 @@ import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import GenreButton from "./components/genres/GenreButton";
+import SystemContent from "./components/sysContent/SystemContent";
 
-// const playerInput = {
-//   playerActions: "",
-// };
+
+const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
+  const [playerActions, setPlayerActions] = useState<string>("");
   const [response, setResponse] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+
   const fetchChatGpt = async () => {
     try {
-      const res = await axios.post("/api/openai", playerActions, {
+      const res = await axios.post("/api/openai",{content, playerActions}, {
         headers: {
           "Content-Type": "application/json",
-        },
-      });
+        }, 
+      }, );
       setResponse(res.data.message.content);
       console.log(res.data.message.content);
     } catch (error) {
@@ -25,21 +28,18 @@ export default function Home() {
     }
   };
 
-  // const formRef = useRef();
-  // const [{ playerActions }, setState] = useState(playerInput);
-
-  // const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-  //   const { name, value } = e.target;
-  //   setState((prevState) => ({ ...prevState, [name]: value }));
-  //   console.log(`Updated ${name} to ${value}`); // For debugging
-  // };
-  // const clearState = () => setState({ ...playerInput });
-
-  const [playerActions, setPlayerActions] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPlayerActions(e.target.value);
     console.log(`Updated playerActions to ${e.target.value}`); // For debugging
+  };
+
+  const handleChooseGenre = (genre: string) => {
+    SystemContent.forEach((item) => {
+      if (item.genre === genre) {
+        setContent(item.content)
+      }
+    })
   };
 
   const clearState = () => setPlayerActions("");
@@ -53,27 +53,26 @@ export default function Home() {
       console.error("Error occurred during fetchChatGpt:", error);
     }
   };
-  const genres = ['Sci-fi', 'Horror', 'Fantasy', 'Noir'];
+
   return (
     <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
       <div
         id="promptSECTION"
         className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
       >
-        <div id="prompt" className="">
+        <div id="prompt" className="m-5">
           {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
         </div>
       </div>
-
       <div
-      id="selectionSECTION"
-      className="h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between"
-    >
-      {genres.map((genre, index) => (
-        <GenreButton key={index} genre={genre} />
-      ))}
-    </div>
-  );
+        id="selectionSECTION"
+        className="h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between"
+      >
+        {genres.map((genre, index) => (
+          <GenreButton key={index} genre={genre} chooseGenre={handleChooseGenre} />
+        ))}
+      </div>
+      );
       <div
         id="inputeSECTION"
         className="

@@ -9,8 +9,8 @@ export async function POST(req) {
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
-        { role: "system", content: "You are a helpful assistant." }, // change this to a variable query base on the user selection
-        { role: "user", content: body } // change this to a variable depending on what the user types
+        { role: "system", content: body.content }, // change this to a variable query base on the user selection
+        { role: "user", content: body.playerActions } // change this to a variable depending on what the user types
       ],
     });
 
