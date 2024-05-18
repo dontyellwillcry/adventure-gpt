@@ -1,11 +1,9 @@
 "use client";
-// import openai from "@/utils/openai";
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
 import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "./components/sysContent/SystemContent";
-import Backgrounds from "./components/backgrounds/Backgrounds"
+import Backgrounds from "./components/backgrounds/Backgrounds";
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
@@ -14,7 +12,7 @@ export default function Home() {
   const [response, setResponse] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [currentGenre, setCurrentGenre] = useState<string>("");
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  // const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const fetchChatGpt = async () => {
     try {
@@ -39,12 +37,15 @@ export default function Home() {
     console.log(`Updated playerActions to ${e.target.value}`); // For debugging
   };
 
+  /* This function takes the selected genre as an argument and compares it against an array of objects that each has a genre
+   as a key:value pair. when it matches the genre to the SystemContent genre it passes the content key:value pair to the 
+   content useState() and it passes the SystemContent.genre to the current useState()*/
   const handleChooseGenre = (genre: string) => {
     SystemContent.forEach((item) => {
       if (item.genre === genre) {
         setContent(item.content);
-        setCurrentGenre(item.genre)
-        setIsVisible(prevState => !prevState);
+        setCurrentGenre(item.genre);
+        // setIsVisible((prevState) => !prevState);
       }
     });
   };
@@ -61,20 +62,22 @@ export default function Home() {
     }
   };
 
+  /*checkGenreBackground takes one perameter and checks if our Background object has a key:value pair that matches the string passed.
+  If if does then it saves it as a variable and if background is true then return the background.imageURL else return null*/
   const checkGenreBackground = (genre: string) => {
-    const background = Backgrounds.find(bg => bg.genre === genre);
+    const background = Backgrounds.find((bg) => bg.genre === genre);
     return background ? background.imageUrl : null;
   };
 
+  /*backgroundImageUrl holds the return value from the checkGenreBackground function which is taking our currentGenre
+  as a argument.  */
   const backgroundImageUrl = checkGenreBackground(currentGenre);
 
   const styles = {
     backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'url("/images/Lake.png")',
     backgroundSize: "cover",
-    transition: "background-image 1s ease-in-out"
-
-  }
-    console.log("This is my content", content)
+    transition: "background-image 1s ease-in-out",
+  };
   return (
     <div style={styles}>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
@@ -86,10 +89,12 @@ export default function Home() {
             {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
           </div>
         </div>
-        <div 
+        <div
           id="selectionSECTION"
-          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${isVisible ? '' : 'invisible'}`}
-          >
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${
+            !content ? "" : "invisible"
+          }`}
+        >
           {genres.map((genre, index) => (
             <GenreButton key={index} genre={genre} chooseGenre={handleChooseGenre} />
           ))}
