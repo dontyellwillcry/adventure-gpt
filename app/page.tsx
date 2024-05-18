@@ -14,11 +14,10 @@ export default function Home() {
   const [currentGenre, setCurrentGenre] = useState<string>("");
   // const [isVisible, setIsVisible] = useState<boolean>(true);
 
+  // prettier-ignore
   const fetchChatGpt = async () => {
     try {
-      const res = await axios.post(
-        "/api/openai",
-        { content, playerActions },
+      const res = await axios.post("/api/openai",{ content, playerActions },
         {
           headers: {
             "Content-Type": "application/json",
@@ -38,8 +37,8 @@ export default function Home() {
   };
 
   /* This function takes the selected genre from the genre.map as an argument and compares it against an array of objects that each has a genre
-   as a key:value pair. when it matches the genre to the SystemContent genre it passes the content key:value pair to the 
-   content useState() and it passes the SystemContent.genre to the current useState()*/
+   as a key:value pair. when it matches the genre to the SystemContent.genre it passes the content key:value pair to the 
+   content useState() and it passes the SystemContent.genre to the currentGenre useState()*/
   const handleChooseGenre = (genre: string) => {
     SystemContent.forEach((item) => {
       if (item.genre === genre) {
