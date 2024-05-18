@@ -14,6 +14,7 @@ export default function Home() {
   const [response, setResponse] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [currentGenre, setCurrentGenre] = useState<string>("");
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const fetchChatGpt = async () => {
     try {
@@ -43,6 +44,7 @@ export default function Home() {
       if (item.genre === genre) {
         setContent(item.content);
         setCurrentGenre(item.genre)
+        setIsVisible(prevState => !prevState);
       }
     });
   };
@@ -69,10 +71,10 @@ export default function Home() {
   const styles = {
     backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'url("/images/Lake.png")',
     backgroundSize: "cover",
-    transition: "background-image 0.5s ease-in-out"
+    transition: "background-image 1s ease-in-out"
 
   }
-
+    console.log("This is my content", content)
   return (
     <div style={styles}>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
@@ -84,15 +86,14 @@ export default function Home() {
             {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
           </div>
         </div>
-        <div
+        <div 
           id="selectionSECTION"
-          className="h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between"
-        >
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${isVisible ? '' : 'invisible'}`}
+          >
           {genres.map((genre, index) => (
             <GenreButton key={index} genre={genre} chooseGenre={handleChooseGenre} />
           ))}
         </div>
-        );
         <div
           id="inputeSECTION"
           className="
