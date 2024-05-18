@@ -68,7 +68,8 @@ export default function Home() {
 
   const styles = {
     backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : 'url("/images/Lake.png")',
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    transition: "background-image 0.5s ease-in-out"
 
   }
 
