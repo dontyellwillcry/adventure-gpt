@@ -73,7 +73,7 @@ export default function Home() {
   }
 
   return (
-    <body style={styles}>
+    <div style={styles}>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
         <div
           id="promptSECTION"
@@ -131,6 +131,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
