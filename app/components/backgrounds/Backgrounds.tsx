@@ -10,11 +10,11 @@ interface Background {
       imageUrl: "/images/Sci-fi.png",
     },
     {
-      genre: "Horror",
+      genre: "Fantasy",
       imageUrl: "/images/Fantasy3.jpg",
     },
     {
-      genre: "Fantasy",
+      genre: "Horror",
       imageUrl: "/images/Horror2.jpg",
     },
     {
