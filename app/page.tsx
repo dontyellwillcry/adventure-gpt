@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "./components/sysContent/SystemContent";
 import Backgrounds from "./components/backgrounds/Backgrounds";
+import ActionButtons from "./components/actions/ActionButtons";
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
@@ -77,6 +78,7 @@ export default function Home() {
     backgroundSize: "cover",
     transition: "background-image 3s ease-in-out",
   };
+
   return (
     <div style={styles}>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
@@ -137,6 +139,7 @@ export default function Home() {
                 Send
               </button>
             </form>
+            <ActionButtons/>
           </div>
         </div>
       </div>
