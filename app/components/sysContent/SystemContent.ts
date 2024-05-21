@@ -3,6 +3,7 @@ interface SystemContentProps {
   genre: string;
 }
 
+// This needs to be moved to the DB once the table is created.
 const SystemContent: SystemContentProps[] = [
   {
     content:
