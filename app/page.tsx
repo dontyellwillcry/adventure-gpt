@@ -9,13 +9,13 @@ import ActionButtons from "./components/actions/ActionButtons";
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
-  const [playerActions, setPlayerActions] = useState<string>("");
-  const [response, setResponse] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [currentGenre, setCurrentGenre] = useState<string>("");
-  // const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [playerActions, setPlayerActions] = useState<string>(""); // The user's input
+  const [response, setResponse] = useState<string>(""); // The response from openai
+  const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
+  const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
 
   // prettier-ignore
+  // Client side request to our server. with both "content" and "playerAction" as arguments
   const fetchChatGpt = async () => {
     try {
       const res = await axios.post("/api/openai",{ content, playerActions },
@@ -45,7 +45,6 @@ export default function Home() {
       if (item.genre === genre) {
         setContent(item.content);
         setCurrentGenre(item.genre);
-        // setIsVisible((prevState) => !prevState);
       }
     });
   };
@@ -139,7 +138,7 @@ export default function Home() {
                 Send
               </button>
             </form>
-            <ActionButtons/>
+            <ActionButtons />
           </div>
         </div>
       </div>
