@@ -4,17 +4,18 @@ import { useRef, useEffect, useState } from "react";
 import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "./components/sysContent/SystemContent";
 import Backgrounds from "./components/backgrounds/Backgrounds";
+import ActionButtons from "./components/actions/ActionButtons";
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
-  const [playerActions, setPlayerActions] = useState<string>("");
-  const [response, setResponse] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-  const [currentGenre, setCurrentGenre] = useState<string>("");
-  // const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [playerActions, setPlayerActions] = useState<string>(""); // The user's input
+  const [response, setResponse] = useState<string>(""); // The response from openai
+  const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
+  const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
 
   // prettier-ignore
+  // Client side request to our server. with both "content" and "playerAction" as arguments
   const fetchChatGpt = async () => {
     try {
       const res = await axios.post("/api/openai",{ content, playerActions },
@@ -44,7 +45,6 @@ export default function Home() {
       if (item.genre === genre) {
         setContent(item.content);
         setCurrentGenre(item.genre);
-        // setIsVisible((prevState) => !prevState);
       }
     });
   };
@@ -77,6 +77,7 @@ export default function Home() {
     backgroundSize: "cover",
     transition: "background-image 3s ease-in-out",
   };
+
   return (
     <div style={styles}>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
@@ -137,6 +138,7 @@ export default function Home() {
                 Send
               </button>
             </form>
+            <ActionButtons />
           </div>
         </div>
       </div>
