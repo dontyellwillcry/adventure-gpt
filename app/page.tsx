@@ -5,6 +5,8 @@ import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "./components/sysContent/SystemContent";
 import Backgrounds from "./components/backgrounds/Backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
+import FetchItems from "./components/fetchItems/FetchItems"
+import Payload, { PayloadProps } from "./components/payload/Payload"
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
@@ -13,6 +15,12 @@ export default function Home() {
   const [response, setResponse] = useState<string>(""); // The response from openai
   const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
   const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
+  // const [payload, setPayload] - useState<PayloadProps>("");
+
+
+  useEffect(() => {
+    FetchItems();
+  }, []);
 
   // prettier-ignore
   // Client side request to our server. with both "content" and "playerAction" as arguments
