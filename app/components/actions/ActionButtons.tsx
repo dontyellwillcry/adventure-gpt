@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 const ActionButtons: React.FC = () => {
   /* Is event.altKey true? Then check what key is pressed. In case 1-4 trigger something */
   const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.altKey) {
+    // if (event.altKey) {
       switch (event.key) {
         case "1":
           console.log("You pressed Alt 1");
@@ -18,7 +18,7 @@ const ActionButtons: React.FC = () => {
           console.log("You pressed Alt 4");
           break;
       }
-    }
+    // }
   };
   /* This calls an event listener on the document and listens for a keydown event and also triggers the handleKeyPress function */
   useEffect(() => {
