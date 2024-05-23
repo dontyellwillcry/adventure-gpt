@@ -6,7 +6,7 @@ import SystemContent from "./components/sysContent/SystemContent";
 import Backgrounds from "./components/backgrounds/Backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems"
-import Payload, { PayloadProps } from "./components/payload/Payload"
+// import Payload, { PayloadProps } from "./components/payload/Payload"
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
