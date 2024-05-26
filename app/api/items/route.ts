@@ -17,7 +17,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
 }
 
 
-export async function POST(req:Request, res: NextApiResponse) {
+export async function POST(req:NextRequest, res: NextApiResponse) {
   const body = await req.json()
    console.log("here is my body", body)
  
