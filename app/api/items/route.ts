@@ -9,20 +9,18 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
       throw new Error("Network response was not ok");
     }
     return NextResponse.json({ data: result.rows });
-    
   } catch (error) {
     console.error("Error with query", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
 
+export async function POST(req: NextRequest, res: NextApiResponse) {
+  const body = await req.json();
+  console.log("here is my body", body);
 
-export async function POST(req:NextRequest, res: NextApiResponse) {
-  const body = await req.json()
-   console.log("here is my body", body)
- 
   try {
-    const queryText =  `INSERT INTO "items" (item_name, item_description, special_ability) 
+    const queryText = `INSERT INTO "items" (item_name, item_description, special_ability)
     VALUES ($1, $2, $3);`;
     const queryParams = [body.item_name, body.item_description, body.special_ability];
 
@@ -31,7 +29,6 @@ export async function POST(req:NextRequest, res: NextApiResponse) {
       throw new Error("Network response was not ok");
     }
     return NextResponse.json({ data: result.rows });
-    
   } catch (error) {
     console.error("Error with query", error);
     res.status(500).json({ error: "Internal Server Error" });
