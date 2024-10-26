@@ -7,7 +7,6 @@ import Backgrounds from "./components/backgrounds/Backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems"
 // import Payload, { PayloadProps } from "./components/payload/Payload"
-// DELETE THIS FOR TESTING SAM
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
@@ -26,7 +25,7 @@ export default function Home() {
   // Client side request to our server. with both "content" and "playerAction" as arguments
   const fetchChatGpt = async () => {
     try {
-      const res = await axios.post("/api/openai",{ content, playerActions },
+      const res = await axios.post("/api/openai", { content, playerActions },
         {
           headers: {
             "Content-Type": "application/json",
@@ -99,9 +98,8 @@ export default function Home() {
         </div>
         <div
           id="selectionSECTION"
-          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${
-            !content ? "" : "invisible"
-          }`}
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${!content ? "" : "invisible"
+            }`}
         >
           {genres.map((genre, index) => (
             <GenreButton key={index} genre={genre} chooseGenre={handleChooseGenre} />
