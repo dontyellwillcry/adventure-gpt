@@ -7,7 +7,7 @@ import Backgrounds from "./components/backgrounds/Backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems"
 // import Payload, { PayloadProps } from "./components/payload/Payload"
-
+// DELETE THIS FOR TESTING SAM
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
