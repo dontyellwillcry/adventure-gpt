@@ -7,6 +7,7 @@ import Backgrounds from "./components/backgrounds/Backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems"
 // import Payload, { PayloadProps } from "./components/payload/Payload"
+// THIS IS TO MAKE SURE MAIN AND FEATURE BRANCHES ARE AT THE SAME SPOT
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
