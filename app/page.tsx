@@ -2,12 +2,12 @@
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import GenreButton from "./components/genres/GenreButton";
-import SystemContent from "./components/sysContent/SystemContent";
-import Backgrounds from "./components/backgrounds/Backgrounds";
+import SystemContent from "../lib/sysContent/SystemContent";
+import Backgrounds from "../lib/backgrounds/Backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems"
-// import Payload, { PayloadProps } from "./components/payload/Payload"
-import Payload, { PayloadProps } from "./components/payload/Payload" //test import
+// import Payload, { PayloadProps } from "../lib/payload/Payload"
+import Payload, { PayloadProps } from "../lib/payload/Payload" //test import
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
