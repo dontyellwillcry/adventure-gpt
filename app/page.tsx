@@ -5,9 +5,9 @@ import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "../lib/sysContent/systemContent";
 import Backgrounds from "../lib/backgrounds/backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
-import FetchItems from "./components/fetchItems/FetchItems"
+import FetchItems from "./components/fetchItems/FetchItems";
 // import Payload, { PayloadProps } from "../lib/payload/Payload"
-import Payload, { PayloadProps } from "../lib/payload/payload" //test import
+import Payload, { PayloadProps } from "../lib/payload/payload"; //test import
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
@@ -16,7 +16,6 @@ export default function Home() {
   const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
   const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
   const [payload, setPayload] = useState<PayloadProps>("");
-
 
   useEffect(() => {
     FetchItems();
@@ -34,6 +33,9 @@ export default function Home() {
         }
       );
       setResponse(res.data.message.content);
+      setContent(res.data.message.content);/* Before adding this setContent, anytime the user chose a option provided by openai and then submitted 
+       that option the same content was sent to chatgpt (see sysContent inside lib folder) so anytime the user made a choice there was no connection to the
+       precious response from chatgpt. This is not a long term fix*/
       console.log("This is inside the fetchChatGPT: ", res.data.message.content);
     } catch (error) {
       console.error("There was a problem fetching from openai:", error);
@@ -51,10 +53,12 @@ export default function Home() {
   const handleChooseGenre = (genre: string) => {
     SystemContent.forEach((item) => {
       if (item.genre === genre) {
-        setContent(item.content);
+        let jsonString = JSON.stringify(item, null, 2);
+        setContent(jsonString ?? ""); //coalescing operator (??) to default to an empty string if item.content is undefined
+        console.log("This is the CONTENT: ", item) // For debugging
         setCurrentGenre(item.genre);
       } else {
-        console.log('No Genre Found.')
+        console.log("No Genre Found.");
       }
     });
   };
@@ -101,8 +105,9 @@ export default function Home() {
         </div>
         <div
           id="selectionSECTION"
-          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${!content ? "" : "invisible"
-            }`}
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${
+            !content ? "" : "invisible"
+          }`}
         >
           {genres.map((genre, index) => (
             <GenreButton key={index} genre={genre} chooseGenre={handleChooseGenre} />
