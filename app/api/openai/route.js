@@ -4,6 +4,8 @@ import openai from "@/utils/openai";
 export async function POST(req) {
 
   const body = await req.json()
+  console.log(body.content)//dubugging purposes
+  console.log(body.playerActions)//dubugging purposes
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",

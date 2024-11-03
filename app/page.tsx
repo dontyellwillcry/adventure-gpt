@@ -33,7 +33,7 @@ export default function Home() {
         }
       );
       setResponse(res.data.message.content);
-      console.log(res.data.message.content);
+      console.log("This is inside the fetchChatGPT: ", res.data.message.content);
     } catch (error) {
       console.error("There was a problem fetching from openai:", error);
     }
@@ -52,6 +52,8 @@ export default function Home() {
       if (item.genre === genre) {
         setContent(item.content);
         setCurrentGenre(item.genre);
+      } else {
+        console.log('No Genre Found.')
       }
     });
   };
