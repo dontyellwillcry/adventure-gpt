@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "../lib/sysContent/SystemContent";
-import Backgrounds from "../lib/backgrounds/Backgrounds";
+import Backgrounds from "../lib/backgrounds/backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems"
 // import Payload, { PayloadProps } from "../lib/payload/Payload"
