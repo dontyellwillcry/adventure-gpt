@@ -54,7 +54,7 @@ export default function Home() {
       if (item.genre === genre) {
         let jsonString = JSON.stringify(item, null, 2);
         setContent(jsonString ?? ""); //coalescing operator (??) to default to an empty string if item.content is undefined
-        console.log("This is the CONTENT: ", item) // For debugging
+        console.log("This is the CONTENT: ", item); // For debugging
         setCurrentGenre(item.genre);
       } else {
         console.log("No Genre Found.");
