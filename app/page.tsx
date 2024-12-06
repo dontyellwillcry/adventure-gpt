@@ -7,7 +7,7 @@ import Backgrounds from "../lib/backgrounds/backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems";
 // import Payload, { PayloadProps } from "../lib/payload/Payload"
-import Payload, { PayloadProps } from "../lib/payload/payload"; //test import
+
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
@@ -15,7 +15,9 @@ export default function Home() {
   const [response, setResponse] = useState<string>(""); // The response from openai
   const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
   const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
-  const [payload, setPayload] = useState<PayloadProps>("");
+
+  // const [payload, setPayload] = useState<PayloadProps>("");
+
 
   useEffect(() => {
     FetchItems();
@@ -53,7 +55,9 @@ export default function Home() {
   const handleChooseGenre = (genre: string) => {
     SystemContent.forEach((item) => {
       if (item.genre === genre) {
-        setContent(item.content);
+        let jsonString = JSON.stringify(item, null, 2);
+        setContent(jsonString ?? ""); //coalescing operator (??) to default to an empty string if item.content is undefined
+        console.log("This is the CONTENT: ", item); // For debugging
         setCurrentGenre(item.genre);
       } else {
         console.log("No Genre Found.");
