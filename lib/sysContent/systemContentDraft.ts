@@ -27,6 +27,7 @@ interface SystemContentProps {
       };
     }[];
     myItems?: {
+      [key: string]: any // This is a possible fix for adding new key:value pairs
       item1?: {
         name?: string;
         damage?: number;
