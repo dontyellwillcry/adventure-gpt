@@ -56,6 +56,7 @@ export default function Home() {
     SystemContent.forEach((item) => {
       if (item.genre === genre) {
         let jsonString = JSON.stringify(item, null, 2);
+        console.log("This is the JSON: ", jsonString); // For debugging
         setContent(jsonString ?? ""); //coalescing operator (??) to default to an empty string if item.content is undefined
         console.log("This is the CONTENT: ", item); // For debugging
         setCurrentGenre(item.genre);
