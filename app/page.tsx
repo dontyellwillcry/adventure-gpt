@@ -6,6 +6,8 @@ import SystemContent from "../lib/sysContent/systemContent";
 import Backgrounds from "../lib/backgrounds/backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems";
+import FetchUsers from "./components/fetchUsers/FetchUsers";
+
 // import Payload, { PayloadProps } from "../lib/payload/Payload"
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
@@ -21,6 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     FetchItems();
+    FetchUsers();
   }, []);
 
   // prettier-ignore
