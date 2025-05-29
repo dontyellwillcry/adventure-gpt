@@ -139,7 +139,7 @@ export default function Home() {
             w-full h-full"
               >
                 <div className="flex flex-col w-full h-full">
-                  <label htmlFor="message">Your Actions</label>
+                  <label htmlFor="message" className="ml-3 mt-3 mb-3">Your Actions</label>
                   <textarea
                     name="playerActions"
                     id="playerActions"
