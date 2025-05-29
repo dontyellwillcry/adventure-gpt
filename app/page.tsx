@@ -111,7 +111,7 @@ export default function Home() {
         </div>
         <div
           id="selectionSECTION"
-          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between rounded-3xl ${
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between rounded-3xl backdrop-blur-md ${
             !content ? "" : "invisible" 
           }`}
         >
