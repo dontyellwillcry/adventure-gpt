@@ -103,7 +103,7 @@ export default function Home() {
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
         <div
           id="promptSECTION"
-          className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+          className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center rounded-3xl" 
         >
           <div id="prompt" className="m-5">
             {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
@@ -111,8 +111,8 @@ export default function Home() {
         </div>
         <div
           id="selectionSECTION"
-          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${
-            !content ? "" : "invisible"
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between rounded-3xl ${
+            !content ? "" : "invisible" 
           }`}
         >
           {genres.map((genre, index) => (
@@ -121,7 +121,7 @@ export default function Home() {
         </div>
         <div
           id="inputeSECTION"
-          className="h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+          className="h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center rounded-3xl"
         >
           <div
             id="inputCONTAINER"
