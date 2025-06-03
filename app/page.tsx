@@ -159,6 +159,9 @@ export default function Home() {
               </button>
             </form>
             <ActionButtons />
+            <button className="mt-3 px-4 py-2 bg-black border border-white text-white hover:bg-white hover:text-black transition duration-500 ease-in-out">
+              Backpack
+            </button>
           </div>
         </div>
       </div>
