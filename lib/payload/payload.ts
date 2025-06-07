@@ -12,10 +12,6 @@ interface PayloadProps {
   default?: string;
 }
 
-const Payload: PayloadProps[] = [
-  {
-    
-  },
-];
+const Payload: PayloadProps[] = [];
 
 export default Payload;
