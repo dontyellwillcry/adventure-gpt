@@ -41,13 +41,13 @@ interface SystemContentProps {
     }[];
   }
 
-  let contentStruct = {
+  // let contentStruct = {
 
-    // what ai just sent as the current scene
-    // what adventurers actions are in response
-    // ask it to say what happens next (maybe decide a specific timeframe)
+  //   what ai just sent as the current scene
+  //   what adventurers actions are in response
+  //   ask it to say what happens next (maybe decide a specific timeframe)
 
-  }
+  // }
   
 
 
