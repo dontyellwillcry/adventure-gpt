@@ -1,6 +1,6 @@
-// DO NOT USE PAYLOADS IN PRODUCTION
-// This file is for development purposes only and should not be used in production environments.
-// Please use systemContent.ts instead.
+// ! DO NOT USE PAYLOADS IN PRODUCTION
+// *This file is for development purposes only and should not be used in production environments.
+// *Please use systemContent.ts instead.
 interface Item {
   itemName: string;
   itemDescription: string;
