@@ -20,7 +20,6 @@ export default function Home() {
 
   // const [payload, setPayload] = useState<PayloadProps>("");
 
-
   useEffect(() => {
     FetchItems();
     FetchUsers();
@@ -103,7 +102,7 @@ export default function Home() {
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
         <div
           id="promptSECTION"
-          className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center rounded-3xl" 
+          className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center rounded-3xl"
         >
           <div id="prompt" className="m-5">
             {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
@@ -112,7 +111,7 @@ export default function Home() {
         <div
           id="selectionSECTION"
           className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between rounded-3xl backdrop-blur-md ${
-            !content ? "" : "invisible" 
+            !content ? "" : "invisible"
           }`}
         >
           {genres.map((genre, index) => (
@@ -139,7 +138,9 @@ export default function Home() {
             w-full h-full"
               >
                 <div className="flex flex-col w-full h-full">
-                  <label htmlFor="message" className="ml-3 mt-3 mb-3">Your Actions</label>
+                  <label htmlFor="message" className="ml-3 mt-3 mb-3">
+                    Your Actions
+                  </label>
                   <textarea
                     name="playerActions"
                     id="playerActions"
