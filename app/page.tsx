@@ -9,6 +9,7 @@ import FetchItems from "./components/fetchItems/FetchItems";
 import FetchUsers from "./components/fetchUsers/FetchUsers";
 
 
+// This is a static array of genres that will be used to render the genre buttons
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
