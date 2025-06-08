@@ -8,7 +8,6 @@ import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems";
 import FetchUsers from "./components/fetchUsers/FetchUsers";
 
-// import Payload, { PayloadProps } from "../lib/payload/Payload"
 
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
