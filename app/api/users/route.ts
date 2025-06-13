@@ -8,7 +8,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     if (result.status < 200 || result.status >= 300) {
       throw new Error("Network response was not ok");
     }
-    return NextResponse.json({ data: result.rows });
+    return NextResponse.json(result.rows);
   } catch (error) {
     console.error("Error with query", error);
     res.status(500).json({ error: "Internal Server Error" });
