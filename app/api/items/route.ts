@@ -1,21 +1,17 @@
 import pool from "@/utils/DB";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest) {
   try {
     const result = await pool.query(`SELECT * FROM "items";`);
-    if (result.status < 200 || result.status >= 300) {
-      throw new Error("Network response was not ok");
-    }
-    return NextResponse.json({ data: result.rows });
+    return NextResponse.json({ sysContent: result.rows }); // insted of returning result.rows directly, we wrap it in an object with sysContent key
   } catch (error) {
     console.error("Error with query", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
 
-export async function POST(req: NextRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest) { // 
   const body = await req.json();
   console.log("here is my body", body);
 
@@ -25,12 +21,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     const queryParams = [body.item_name, body.item_description, body.special_ability];
 
     const result = await pool.query(queryText, queryParams);
-    if (result.status < 200 || result.status >= 300) {
-      throw new Error("Network response was not ok");
-    }
     return NextResponse.json({ data: result.rows });
   } catch (error) {
     console.error("Error with query", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
