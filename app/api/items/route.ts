@@ -13,8 +13,6 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) { // 
   const body = await req.json();
-  console.log("here is my body", body);
-
   try {
     const queryText = `INSERT INTO "items" (item_name, item_description, special_ability)
     VALUES ($1, $2, $3);`;
