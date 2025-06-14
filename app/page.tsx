@@ -18,7 +18,7 @@ export default function Home() {
   const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
   const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
 
-  // const [payload, setPayload] = useState<PayloadProps>("");
+  // const [sysContent, setSysContent] = useState<SystemContentProps>({});
 
   useEffect(() => {
     FetchItems();
