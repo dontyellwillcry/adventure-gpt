@@ -28,11 +28,10 @@ interface SystemContentProps {
 }
 
 // This needs to be moved to the DB once the table is created.
-
 const SystemContent: SystemContentProps[] = [
   {
     content:
-      "You are a story teller crafting a Schi-fi experience for the user in a choose your own adventure format, please remember the characters and items listed to be used at a later time in the story. Provide options or an open ended response the user each time you craft the story",
+      "You are a story teller crafting a Schi-fi experience for the user in a choose your own adventure format, please remember the characters, items, the story you are providing to the user listed to be used at a later time in the story. Provide options or an open ended response the user each time you craft the story",
     genre: "Sci-fi",
     myCharacters: [
       {

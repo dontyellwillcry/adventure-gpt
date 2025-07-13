@@ -41,18 +41,18 @@ interface SystemContentProps {
     }[];
   }
 
-  let contentStruct = {
+  // let contentStruct = {
 
-    // what ai just sent as the current scene
-    // what adventurers actions are in response
-    // ask it to say what happens next (maybe decide a specific timeframe)
+  //   what ai just sent as the current scene
+  //   what adventurers actions are in response
+  //   ask it to say what happens next (maybe decide a specific timeframe)
 
-  }
+  // }
   
 
 
   
-  const SystemContent: SystemContentProps[] = [
+  const SystemContentDraft: SystemContentProps[] = [
     {
       content:
         "You are a story teller crafting a Schi-fi experience for the user in a choose your own adventure format, please remember the characters and items listed to be used at a later time in the story. Provide options or an open ended response the user each time you craft the story",
@@ -195,5 +195,5 @@ interface SystemContentProps {
     },
   ];
   
-  export default SystemContent;
+  export default SystemContentDraft;
   

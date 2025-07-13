@@ -6,8 +6,10 @@ import SystemContent from "../lib/sysContent/systemContent";
 import Backgrounds from "../lib/backgrounds/backgrounds";
 import ActionButtons from "./components/actions/ActionButtons";
 import FetchItems from "./components/fetchItems/FetchItems";
-// import Payload, { PayloadProps } from "../lib/payload/Payload"
+import FetchUsers from "./components/fetchUsers/FetchUsers";
 
+
+// This is a static array of genres that will be used to render the genre buttons
 const genres = ["Sci-fi", "Horror", "Fantasy", "Noir"];
 
 export default function Home() {
@@ -16,11 +18,11 @@ export default function Home() {
   const [content, setContent] = useState<string>(""); // When the user selects the genre, a content query is saved for the api request
   const [currentGenre, setCurrentGenre] = useState<string>(""); // When the Genre is selected its added to this state to trigger the background
 
-  // const [payload, setPayload] = useState<PayloadProps>("");
-
+  // const [sysContent, setSysContent] = useState<SystemContentProps>({});
 
   useEffect(() => {
     FetchItems();
+    FetchUsers();
   }, []);
 
   // prettier-ignore
@@ -56,6 +58,7 @@ export default function Home() {
     SystemContent.forEach((item) => {
       if (item.genre === genre) {
         let jsonString = JSON.stringify(item, null, 2);
+        console.log("This is the JSON: ", jsonString); // For debugging
         setContent(jsonString ?? ""); //coalescing operator (??) to default to an empty string if item.content is undefined
         console.log("This is the CONTENT: ", item); // For debugging
         setCurrentGenre(item.genre);
@@ -99,7 +102,7 @@ export default function Home() {
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
         <div
           id="promptSECTION"
-          className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+          className="h-1/3 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center rounded-3xl"
         >
           <div id="prompt" className="m-5">
             {response ? <h1>{response}</h1> : <h1>Hello! Please select your adventure</h1>}
@@ -107,7 +110,7 @@ export default function Home() {
         </div>
         <div
           id="selectionSECTION"
-          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between ${
+          className={`h-1/4 w-2/3 mt-5 mb-5 border-4 border-gray-500 flex flex-row flex-wrap justify-between rounded-3xl backdrop-blur-md ${
             !content ? "" : "invisible"
           }`}
         >
@@ -117,7 +120,7 @@ export default function Home() {
         </div>
         <div
           id="inputeSECTION"
-          className="h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center"
+          className="h-1/4 w-2/3 bg-gray-800 border-4 border-gray-500 flex flex-col justify-center items-center rounded-3xl"
         >
           <div
             id="inputCONTAINER"
@@ -135,7 +138,9 @@ export default function Home() {
             w-full h-full"
               >
                 <div className="flex flex-col w-full h-full">
-                  <label htmlFor="message">Your Actions</label>
+                  <label htmlFor="message" className="ml-3 mt-3 mb-3">
+                    Your Actions
+                  </label>
                   <textarea
                     name="playerActions"
                     id="playerActions"
@@ -155,6 +160,9 @@ export default function Home() {
               </button>
             </form>
             <ActionButtons />
+            <button className="mt-3 px-4 py-2 bg-black border border-white text-white hover:bg-white hover:text-black transition duration-500 ease-in-out">
+              Backpack
+            </button>
           </div>
         </div>
       </div>
