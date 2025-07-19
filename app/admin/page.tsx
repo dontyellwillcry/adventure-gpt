@@ -4,12 +4,21 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AdminPage() {
+    const router = useRouter();
+    function handleRoute() {
+        router.push("/")
+    }
+
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-white">
-      <div className="flex flex-col items-center justify-center w-96 h-96 border-2 border-black rounded-2xl">
-        <form>
+      <div className="flex flex-col items-center justify-center w-1/2 h-96 border-2 border-black rounded-2xl">
+        <form className="w-full flex flex-col items-center">
           <h1>Admin Page</h1>
           <input placeholder="Search" className="mb-4 p-2 border rounded" />
+          <button type="button" onClick={handleRoute} className="flex items-center justify-center p-4 text-lg bg-blue-500 text-white rounded w-[150px] h-[42px] mt-4 ">
+            Home
+            </button>
         </form>
       </div>
     </main>
