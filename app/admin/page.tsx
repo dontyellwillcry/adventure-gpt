@@ -10,7 +10,7 @@ export default function AdminPage() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen \-white">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-white">
       <h1>Admin Page</h1>
       <div className="flex flex-col items-center justify-center w-1/2 h-[1000px] border-2 border-black rounded-2xl">
         <form className="w-full flex flex-col items-center">
