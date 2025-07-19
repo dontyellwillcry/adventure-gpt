@@ -14,6 +14,55 @@ CREATE TABLE items (
     special_ability VARCHAR(100)
 );
 
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  description TEXT,
+  created_by TEXT CHECK (created_by IN ('admin', 'gpt')) NOT NULL
+);
+
+CREATE TABLE genres (
+  id SERIAL PRIMARY KEY,
+  name TEXT UNIQUE NOT NULL  -- e.g. Horror, Fantasy, Sci-Fi, Noir
+);
+
+CREATE TABLE characters (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  backstory TEXT,
+  character_class TEXT, -- optional: e.g. rogue, mage, etc.
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE adventures (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  genre_id INTEGER REFERENCES genres(id),
+  character_id INTEGER REFERENCES characters(id),
+  title TEXT, -- optional user-provided or system-generated name
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE messages (
+  id SERIAL PRIMARY KEY,
+  adventure_id INTEGER REFERENCES adventures(id) ON DELETE CASCADE,
+  sender TEXT NOT NULL, -- 'user' or 'system' (ChatGPT)
+  content TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE inventory (
+  id SERIAL PRIMARY KEY,
+  adventure_id INTEGER REFERENCES adventures(id) ON DELETE CASCADE,
+  item_id INTEGER REFERENCES items(id),
+  quantity INTEGER DEFAULT 1,
+  UNIQUE(adventure_id, item_id)  -- ensures no duplicates
+);
+
+
 INSERT INTO users (username, email, password)
 VALUES
   ('pixelwizard',  'pixelwizard@mailinator.com', '$2b$10$PIXELW1ZARDHASH0000000000000000000000000'),
