@@ -24,17 +24,16 @@ export default function AdminPage() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center justify-start min-h-screen bg-white">
-      <nav className="w-full bg-gray-100 p-4 flex justify-between items-center h-[50px]">
+    <main className="flex flex-col items-center justify-start min-h-screen bg-neutral-100">
+      <nav className="w-full bg-gray-500 p-4 flex justify-between items-center h-[50px]">
         <Link href="/">Home</Link>
-        navigation goes here
       </nav>
-      <h1>Admin Page</h1>
-      <div className="flex flex-col items-center justify-center w-1/2 h-[700px] border-2 border-black rounded-2xl">
+      <h1 className="mt-32">Admin Page</h1>
+      <div className="flex flex-col items-center justify-center w-[1000px] h-[700px] border-4 border-black rounded-2xl mt-4">
         <form className="w-full flex flex-col items-center">
           <input placeholder="Search" className="mb-4 p-2 border rounded" />
         </form>
-        <table className="w-full mt-8 border m-1">
+        <table className="w-full mt-8 border">
           <thead>
             <tr>
               <th className="text-left p-2">Username</th>
@@ -44,7 +43,7 @@ export default function AdminPage() {
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id} className="border-t">
+              <tr key={user.id} className="border-t hover:bg-white">
                 <td className="p-2">{user.username}</td>
                 <td className="p-2">{user.email}</td>
                 <td className="p-2">{user.created_at}</td>
