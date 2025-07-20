@@ -33,7 +33,7 @@ export default function AdminPage() {
         <form className="w-full flex flex-col items-center">
           <input placeholder="Search" className="mb-4 p-2 border rounded" />
         </form>
-        <table className="w-full mt-8 border">
+        <table className="w-full mt-8 border bg-neutral-200">
           <thead>
             <tr>
               <th className="text-left p-2">Username</th>
