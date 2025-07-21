@@ -100,7 +100,7 @@ export default function Home() {
 
   return (
     <div style={styles}>
-      <nav><Link href="/admin">Admin Page</Link></nav>
+      <nav className="w-full backdrop-blur-md p-4 flex justify-between items-center h-[50px]"><Link href="/admin">Admin Page</Link></nav>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
         <div
           id="promptSECTION"
