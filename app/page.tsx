@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 import GenreButton from "./components/genres/GenreButton";
 import SystemContent from "../lib/sysContent/systemContent";
@@ -99,6 +100,7 @@ export default function Home() {
 
   return (
     <div style={styles}>
+      <nav><Link href="/admin">Admin Page</Link></nav>
       <div id="homePAGE" className="h-screen w-full  text-gray-200 flex flex-col justify-center items-center">
         <div
           id="promptSECTION"

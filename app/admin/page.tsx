@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import FetchUsers from "@/app/components/fetchUsers/FetchUsers";
 import Link from "next/link";
